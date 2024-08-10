@@ -13,7 +13,17 @@ const createUser = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const verifyEmail = catchAsync(async (req, res) => {
+  const result = await UserServices.verifyEmail(req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Email verify successfully',
+    data: result,
+  });
+});
 
 export const UserControllers = {
-  createUser,
+  createUser,verifyEmail
 };

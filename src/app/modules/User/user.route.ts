@@ -15,6 +15,10 @@ router.post(
   UserControllers.createUser,
 );
 
+router.patch('/email-verify',
+  UserControllers.verifyEmail
+)
+
 // router.get('/', auth(USER_ROLE.superAdmin), UserControllers.getAllUser);
 
 // router.get(

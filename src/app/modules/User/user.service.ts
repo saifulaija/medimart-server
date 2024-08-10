@@ -9,6 +9,7 @@ import config from '../../config';
 import path from 'path';
 import fs from 'fs';
 import emailSender from '../../utils/emailSender';
+import { VerifiedEmailUser } from './user.constant';
 
 const createUserIntoDB = async (payload: IUser) => {
   console.log(payload);
@@ -38,16 +39,37 @@ const createUserIntoDB = async (payload: IUser) => {
   const htmlContent = htmlTemplate.replace('{{otpCode}}', verifyCode);
   await emailSender(payload.email, htmlContent);
 
-   setTimeout(async () => {
-     const user = await User.findById(result._id);
-     if (user && !user.isVerified) {
-       await User.findByIdAndDelete(user._id); 
-     }
-   }, 59000);
+  setTimeout(async () => {
+    const user = await User.findById(result._id);
+    if (user && !user.isVerified) {
+      await User.findByIdAndDelete(user._id);
+    }
+  }, 59000);
 
   return result;
 };
 
+const verifyEmail = async (payload: VerifiedEmailUser) => {
+  // Check the verify code
+  const isVerifyCodeMatch = await User.findOne({
+    verifyCode: payload.verifyCode,
+  });
+  if (!isVerifyCodeMatch) {
+    throw new AppError(httpStatus.BAD_REQUEST, '');
+  }
+
+  const result = await User.findByIdAndUpdate(
+    payload._id,
+    { isVerified: true },
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
+
+  return result;
+};
 export const UserServices = {
   createUserIntoDB,
+  verifyEmail,
 };

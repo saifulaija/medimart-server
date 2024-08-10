@@ -10,3 +10,8 @@ export interface DashboardData {
   totalProductsCancelled: number;
   totalRewardsPoints: number;
 }
+
+export interface VerifiedEmailUser{
+  _id:string;
+  verifyCode:string
+}
