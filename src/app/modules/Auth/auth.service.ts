@@ -7,7 +7,7 @@ import AppError from '../../errors/AppError';
 import bcrypt from 'bcrypt';
 import { User } from '../User/user.model';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import { sendEmailForPasswordChange } from '../../utils/sendEmailPasswordChange';
+import { sendEmailForPasswordChange } from '../../utils/emailSender';
 
 const loginUser = async (payload: TLoginUser) => {
   // checking if the user is exist

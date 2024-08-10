@@ -5,6 +5,8 @@ dotenv.config({ path: path.join((process.cwd(), '.env')) });
 
 export default {
   NODE_ENV: process.env.NODE_ENV,
+  sender_email: process.env.SENDER_EMAIL,
+  app_password: process.env.APP_PASSWORD,
   port: process.env.PORT,
   database_url: process.env.DATABASE_URL,
   bcrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS,
@@ -19,12 +21,5 @@ export default {
   cloudinary_api_secret: process.env.CLOUDINARY_API_SECRET,
   super_admin_password: process.env.SUPER_ADMIN_PASSWORD,
   super_admin_email: process.env.SUPER_ADMIN_EMAIL,
-  bkash_password: process.env.bkash_password,
-  bkash_username: process.env.bkash_username,
-  bkash_api_key: process.env.bkash_api_key,
-  bkash_secret_key: process.env.bkash_secret_key,
-  bkash_grant_token_url: process.env.bkash_grant_token_url,
-  bkash_create_payment_url: process.env.bkash_create_payment_url,
-  bkash_execute_payment_url: process.env.bkash_execute_payment_url,
-  bkash_refund_transaction_url: process.env.bkash_refund_transaction_url,
+
 };
