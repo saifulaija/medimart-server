@@ -51,16 +51,18 @@ const createUserIntoDB = async (payload: IUser) => {
 
 const verifyEmail = async (payload: VerifiedEmailUser) => {
   // Check the verify code
-  const isVerifyCodeMatch = await User.findOne({
+  const user = await User.findOne({
     verifyCode: payload.verifyCode,
   });
-  if (!isVerifyCodeMatch) {
-    throw new AppError(httpStatus.BAD_REQUEST, '');
+
+  if (!user) {
+    throw new AppError(httpStatus.BAD_REQUEST, 'Invalid verification code');
   }
 
+  // Update the user's isVerified status
   const result = await User.findByIdAndUpdate(
-    payload._id,
-    { isVerified: true },
+    user._id,
+    { isVerified: true, verifyCode: null }, // Reset verifyCode after successful verification
     {
       new: true,
       runValidators: true,
@@ -69,6 +71,7 @@ const verifyEmail = async (payload: VerifiedEmailUser) => {
 
   return result;
 };
+
 export const UserServices = {
   createUserIntoDB,
   verifyEmail,

@@ -4,6 +4,9 @@ import sendResponse from '../../utils/sendResponse';
 import { UserServices } from './user.service';
 
 const createUser = catchAsync(async (req, res) => {
+  const file=req.file
+  console.log(file,'file');
+  
   const result = await UserServices.createUserIntoDB(req.body);
 
   sendResponse(res, {
@@ -14,6 +17,7 @@ const createUser = catchAsync(async (req, res) => {
   });
 });
 const verifyEmail = catchAsync(async (req, res) => {
+  
   const result = await UserServices.verifyEmail(req.body);
 
   sendResponse(res, {

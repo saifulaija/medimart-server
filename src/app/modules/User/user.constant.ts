@@ -1,6 +1,6 @@
 export const USER_ROLE = {
   superAdmin: 'superAdmin',
-  admin:'admin',
+  admin: 'admin',
   user: 'user',
 } as const;
 
@@ -11,7 +11,6 @@ export interface DashboardData {
   totalRewardsPoints: number;
 }
 
-export interface VerifiedEmailUser{
-  _id:string;
-  verifyCode:string
+export interface VerifiedEmailUser {
+  verifyCode: string;
 }
