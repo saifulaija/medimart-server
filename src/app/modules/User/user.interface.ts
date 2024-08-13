@@ -8,7 +8,8 @@ export interface IUser {
   email: string;
   role: string;
   password: string;
-  photo?: string;
+  image?: string;
+  id?:string;
   isVerified?: boolean; // Optional: To track if email is verified
   verifyCode?: string;
   isDeleted: boolean;

@@ -1,11 +1,9 @@
 // user.service.ts
 import httpStatus from 'http-status';
 import crypto from 'crypto';
-import nodemailer from 'nodemailer';
 import { User } from './user.model';
 import AppError from '../../errors/AppError';
 import { IUser } from './user.interface';
-import config from '../../config';
 import path from 'path';
 import fs from 'fs';
 import emailSender from '../../utils/emailSender';
