@@ -8,6 +8,7 @@ import { orderRoute } from '../modules/order/order.route';
 import { reviewRoutes } from '../modules/review/review.route';
 import { chartRoutes } from '../modules/chartData/chart.route';
 import { CategoryRoutes } from '../modules/Category/category.route';
+import { PrimaryCategoryRoutes } from '../modules/PrimaryCategory/primary.route';
 
 const router = Router();
 
@@ -41,6 +42,10 @@ const moduleRoutes = [
   {
     path:'/category',
     route:CategoryRoutes
+  },
+  {
+    path:'/primary-category',
+    route:PrimaryCategoryRoutes
   }
 ];
 

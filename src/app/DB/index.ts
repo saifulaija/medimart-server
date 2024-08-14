@@ -3,9 +3,10 @@ import { USER_ROLE } from '../modules/User/user.constant';
 import { User } from '../modules/User/user.model';
 
 const superUser = {
-  name:"Md.Mamun Hariz",
+  name: 'Md.Mamun Hariz',
   email: config.super_admin_email,
   password: config.super_admin_password,
+  image: 'admin url',
 
   role: USER_ROLE.superAdmin,
 
